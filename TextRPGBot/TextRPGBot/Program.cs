@@ -72,6 +72,11 @@ namespace TextRPGBot
             {
                 await message.Channel.SendMessageAsync("Suck a cock!");
             }
+            if (message.Content.Substring(0, "!makemeafrisky".Length) == "!makemeafrisky")
+            {
+
+                await message.Channel.SendMessageAsync(string.Join("","Doing you a freasky", message.Content.Substring("!makemeafrisky".Length)));
+            }
         }
 
         public static string ReadTokenFile()
