@@ -13,6 +13,10 @@ namespace TextRPGBot
         private UInt32 statVitality;
         private UInt32 statWillPower;
 
+        private RaceSpecies charRace = Race.GetSpeciesByName("Human");
+
+        
+
 
         private UInt32 totalHealth;
         private UInt32 totalMana;
