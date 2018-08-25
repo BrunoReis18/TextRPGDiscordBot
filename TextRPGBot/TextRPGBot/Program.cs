@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace TextRPGBot
 {
@@ -68,20 +70,20 @@ namespace TextRPGBot
             if (message.Content == "!ping")
                 await message.Channel.SendMessageAsync("pong!");
 
-            if (message.Content == "!loveme")
-            {
-                await message.Channel.SendMessageAsync("Suck a cock!");
-            }
+         
             if (message.Content.Substring(0, "!makemeafrisky".Length) == "!makemeafrisky")
             {
 
                 await message.Channel.SendMessageAsync(string.Join("","Doing you a freasky", message.Content.Substring("!makemeafrisky".Length)));
             }
+            Console.WriteLine(FindCommandAndArguments(message.Content).ArgSequence.ToString());
         }
 
         public static string ReadTokenFile()
         {
             string filepath = "auth.txt";
+
+            Dice d = new Dice();
         
             using (StreamReader r = new StreamReader(filepath))
             {
@@ -91,5 +93,14 @@ namespace TextRPGBot
             }
   
         } 
+        public (string command,IEnumerable<string> ArgSequence) FindCommandAndArguments(String inputMessage)
+        {
+
+           string[] array =  inputMessage.Split(" ");
+          
+
+           
+            return (array[0],array.Skip(1));
+        }
     }
 }
