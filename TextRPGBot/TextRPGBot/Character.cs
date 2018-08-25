@@ -10,10 +10,18 @@ namespace TextRPGBot
         private UInt32 statStrength;
         private UInt32 statIntelligence;
         private UInt32 statDexterity;
-        private UInt32 statHealth;
+        private UInt32 statVitality;
+        private UInt32 statWillPower;
+
+
+        private UInt32 totalHealth;
+        private UInt32 totalMana;
+
+
         public Character(string name)
         {
             charName = name;
+
         }
 
         public UInt32 StatStrength
@@ -31,11 +39,7 @@ namespace TextRPGBot
             get { return statDexterity; }
             set { statDexterity = value; }
         }
-        public UInt32 StatHealth
-        {
-            get { return statHealth; }
-            set { statHealth = value; }
-        }
+        
 
     }
 }
