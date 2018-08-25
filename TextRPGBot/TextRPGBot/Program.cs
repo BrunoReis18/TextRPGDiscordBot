@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Newtonsoft.Json.Linq;
 
 namespace TextRPGBot
 {
@@ -32,7 +34,8 @@ namespace TextRPGBot
             _client.MessageReceived += MessageReceivedAsync;
 
             // Tokens should be considered secret data, and never hard-coded.
-            await _client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("token"));
+            Console.WriteLine(ReadTokenFile());
+            await _client.LoginAsync(TokenType.Bot ,ReadTokenFile() );
             await _client.StartAsync();
 
             // Block the program until it is closed.
@@ -64,6 +67,24 @@ namespace TextRPGBot
 
             if (message.Content == "!ping")
                 await message.Channel.SendMessageAsync("pong!");
+
+            if (message.Content == "!loveme")
+            {
+                await message.Channel.SendMessageAsync("Suck a cock!");
+            }
         }
+
+        public static string ReadTokenFile()
+        {
+            string filepath = "auth.txt";
+        
+            using (StreamReader r = new StreamReader(filepath))
+            {
+             
+                return r.ReadLine();
+
+            }
+  
+        } 
     }
 }
